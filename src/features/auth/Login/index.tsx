@@ -51,7 +51,7 @@ const Login = () => {
     }
 
     dispatch(setCredentials({ user: values.username, isLoggedIn: !!values.username }));
-    navigate(Paths.DASHBOARD);
+    navigate(Paths.MAIN);
     form.reset();
   }
 

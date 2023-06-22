@@ -1,4 +1,5 @@
 const path = require('path');
+const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const prod = process.env.NODE_ENV === 'production';
@@ -40,18 +41,26 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|svg)$/i,
+        test: /\.(png|svg)$/,
         type: 'asset/resource'
       }
     ]
   },
   devtool: prod ? undefined : 'source-map',
   devServer: {
-    historyApiFallback: true
+    hot: true,
+    port: 3000,
+    historyApiFallback: true,
+
+    client: {
+      logging: 'error',
+      overlay: true
+    }
   },
   plugins: [
+    !prod && new ReactRefreshPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html'
     })
-  ]
+  ].filter(Boolean)
 };

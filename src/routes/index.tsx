@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 
+import Layout from '../components/Layout';
 import { Paths } from '../config/paths';
 import { useAppSelector } from '../lib/useAppSelector';
 import { protectedRoutes } from './protected';
@@ -19,5 +20,5 @@ export const AppRoutes = () => {
 
   const element = useRoutes([...routes, ...commonRoutes]);
 
-  return <>{element}</>;
+  return <Layout>{element}</Layout>;
 };
