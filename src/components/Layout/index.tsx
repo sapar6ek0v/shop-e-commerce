@@ -3,13 +3,19 @@ import { MantineProvider } from '@mantine/core';
 import { ThemeProvider } from 'styled-components';
 
 import theme from '../../styles/theme';
+import { useAppSelector } from '../../lib/useAppSelector';
 import GlobalStyles from '../../styles/GlobalStyles';
+import Header from './Header';
+import Footer from './Footer';
+import { ContentWrapper } from './styles';
 
 interface Props {
   children: ReactNode;
 };
 
 const Layout = ({ children }: Props) => {
+  const { isLoggedIn } = useAppSelector((store) => store.auth);
+
   return (
     <ThemeProvider theme={theme}>
       <MantineProvider
@@ -27,7 +33,11 @@ const Layout = ({ children }: Props) => {
         }}
       >
         <GlobalStyles />
-        {children}
+        {isLoggedIn && <Header />}
+        <ContentWrapper>
+          {children}
+        </ContentWrapper>
+        {isLoggedIn && <Footer />}
       </MantineProvider>
     </ThemeProvider>
   );

@@ -1,11 +1,13 @@
-import React from 'react';
-// import { lazyImport } from '../utils/lazyImport';
+import React, { lazy } from 'react';
 
-// const { AuthRoutes } = lazyImport(() => import('@/features/auth'), 'AuthRoutes');
+import Layout from '../components/Layout';
+import { Paths } from '../config/paths';
+
+const Login = lazy(() => import('../features/auth/Login'));
 
 export const publicRoutes = [
   {
-    path: '/auth/*',
-    element: <div>Hello</div>,
+    path: Paths.LOGIN,
+    element: <Layout><Login /></Layout>,
   },
 ];

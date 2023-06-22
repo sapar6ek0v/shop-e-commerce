@@ -1,17 +1,23 @@
 import React from 'react';
-import { useRoutes } from 'react-router-dom';
+import { Navigate, useRoutes } from 'react-router-dom';
 
+import { Paths } from '../config/paths';
 import { useAppSelector } from '../lib/useAppSelector';
 import { protectedRoutes } from './protected';
 import { publicRoutes } from './public';
 
 
 export const AppRoutes = () => {
-  const { user } = useAppSelector((store) => store.auth);
+  const { isLoggedIn } = useAppSelector((store) => store.auth);
 
-  const routes = user ? protectedRoutes : publicRoutes;
+  const commonRoutes = [{
+    path: '*',
+    element: <Navigate to={Paths.LOGIN} />
+  }]
 
-  const element = useRoutes([...routes]);
+  const routes = isLoggedIn ? protectedRoutes : publicRoutes;
+
+  const element = useRoutes([...routes, ...commonRoutes]);
 
   return <>{element}</>;
 };

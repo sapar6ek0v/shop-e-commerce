@@ -9,9 +9,10 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
+    publicPath: '/'
   },
   resolve: {
-    extensions: ['.js', '.ts', '.tsx', '.jsx'],
+    extensions: ['.js', '.ts', '.tsx', '.jsx']
   },
   module: {
     rules: [
@@ -19,9 +20,9 @@ module.exports = {
         test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         resolve: {
-          extensions: ['.ts', '.tsx', '.js', '.json'],
+          extensions: ['.ts', '.tsx', '.js', '.json']
         },
-        use: 'ts-loader',
+        use: 'ts-loader'
       },
       {
         test: /\.(js|jsx)$/,
@@ -29,25 +30,28 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-          },
-        },
+            presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript']
+          }
+        }
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(png|svg)$/i,
-        type: 'asset/resource',
-      },
-    ],
+        type: 'asset/resource'
+      }
+    ]
   },
   devtool: prod ? undefined : 'source-map',
+  devServer: {
+    historyApiFallback: true
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-    }),
-  ],
+      template: './src/index.html'
+    })
+  ]
 };
