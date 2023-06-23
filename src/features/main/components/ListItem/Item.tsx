@@ -2,6 +2,8 @@ import React from 'react'
 import { Group } from '@mantine/core';
 
 import { Product } from '../../../../store/apis/products/types'
+import { useAppDispatch } from '../../../../lib/useAppDispatch';
+import { addToCart } from '../../../../store/slices/products';
 import {
   ItemImgWrapper,
   ItemInfoStack,
@@ -19,6 +21,8 @@ interface Props {
 }
 
 const Item = ({ product }: Props) => {
+  const dispatch = useAppDispatch();
+
   const { rating, image, title, price } = product;
   const rate = [...Array(Math.round(rating.rate)).keys()];
 
@@ -28,7 +32,13 @@ const Item = ({ product }: Props) => {
         <img src={image} alt={title} />
         <ItemHover className='bgBlack' />
         <ItemHotAndSale className="hotAndSale">-65%</ItemHotAndSale>
-        <ItemAddBtn type="button" className="addBtn">Добавить</ItemAddBtn>
+        <ItemAddBtn
+          onClick={() => dispatch(addToCart(product as any))}
+          type="button"
+          className="addBtn"
+        >
+          Добавить
+        </ItemAddBtn>
       </ItemImgWrapper>
 
       <ItemInfoStack>

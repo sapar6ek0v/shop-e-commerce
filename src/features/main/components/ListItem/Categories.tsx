@@ -13,18 +13,20 @@ const Categories = ({ currentCategory }: Props) => {
 
   return (
     <CategoriesGroup>
-      <CategoryItem $isActive>
-        Все
-      </CategoryItem>
       {!isLoading && categories ?
-        categories.map((category, idx) => (
-          <CategoryItem
-            key={`${category}-${idx}`}
-            $isActive={currentCategory === category}
-          >
-            {showTextByCategory(category)}
+        <>
+          <CategoryItem $isActive>
+            Все
           </CategoryItem>
-        )) :
+          {categories.map((category, idx) => (
+            <CategoryItem
+              key={`${category}-${idx}`}
+              $isActive={currentCategory === category}
+            >
+              {showTextByCategory(category)}
+            </CategoryItem>
+          ))}
+        </> :
         <p>Loading...</p>}
     </CategoriesGroup>
   )

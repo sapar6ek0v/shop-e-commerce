@@ -1,19 +1,21 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
 import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import storageSession from 'redux-persist/lib/storage/session';
 
 import { baseApi } from './apis';
 import authReducer from './slices/auth';
+import productsReducer from './slices/products';
 
 const rootReducer = combineReducers({
   auth: authReducer,
+  product: productsReducer,
   [baseApi.reducerPath]: baseApi.reducer
 });
 
 const persistConfig = {
   key: 'root',
-  storage
+  storage: storageSession
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -7,9 +7,11 @@ import logo from '../../../assets/logo.svg';
 import { Paths } from '../../../config/paths';
 import { Container } from '../styles'
 import { HeaderApartContainer, HeaderWrapper } from './styles'
-
+import { useAppSelector } from '../../../lib/useAppSelector';
 
 const Header = () => {
+  const { cart } = useAppSelector((store) => store.product);
+  console.log({ cart });
   return (
     <HeaderWrapper>
       <Container>
