@@ -5,6 +5,7 @@ import { Paths } from '../config/paths';
 
 const Main = lazy(() => import('../features/main'));
 const Cart = lazy(() => import('../features/cart'));
+const Order = lazy(() => import('../features/order'));
 
 export const protectedRoutes = [
   {
@@ -16,7 +17,11 @@ export const protectedRoutes = [
     element: <Cart />,
   },
   {
+    path: Paths.ORDER,
+    element: <Order />,
+  },
+  {
     path: '*',
-    element: <Navigate to={Paths.LOGIN} />
+    element: <Navigate to={Paths.MAIN} />
   },
 ];

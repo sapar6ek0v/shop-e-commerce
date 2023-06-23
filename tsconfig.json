@@ -17,6 +17,7 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "jsx": "react",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowJs": true,
     "checkJs": true,

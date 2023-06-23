@@ -165,7 +165,7 @@ export const ItemName = styled(Link)`
   ${({ theme }) => theme.mixins.fs16};
   font-weight: 400;
   color: var(--dark-gray);
- ${({theme}) => theme.mixins.oneLineText};
+  ${({ theme }) => theme.mixins.oneLineText};
   margin-inline: auto;
   transition: var(--transition);
 
