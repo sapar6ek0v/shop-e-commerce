@@ -15,13 +15,13 @@ const GlobalStyles = createGlobalStyle`
   *:before,
   *:after {
     box-sizing: inherit;
-    font-family: 'Roboto', sans-serif;  
+    font-family: 'Montserrat', sans-serif;  
   }
 
   body {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Montserrat', sans-serif;
   }
 
   h1,

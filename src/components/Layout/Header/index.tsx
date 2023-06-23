@@ -1,15 +1,16 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { IconShoppingCart } from '@tabler/icons-react';
 import { UnstyledButton } from '@mantine/core';
 
 import logo from '../../../assets/logo.svg';
 import { Paths } from '../../../config/paths';
+import { useAppSelector } from '../../../lib/useAppSelector';
 import { Container } from '../styles'
 import { HeaderApartContainer, HeaderWrapper } from './styles'
-import { useAppSelector } from '../../../lib/useAppSelector';
 
 const Header = () => {
+  const navigate = useNavigate();
   const { cart } = useAppSelector((store) => store.product);
   console.log({ cart });
   return (
@@ -20,7 +21,7 @@ const Header = () => {
             <img src={logo} alt="company-logo" />
           </NavLink>
 
-          <UnstyledButton>
+          <UnstyledButton onClick={() => navigate(Paths.CART)}>
             <IconShoppingCart />
           </UnstyledButton>
         </HeaderApartContainer>

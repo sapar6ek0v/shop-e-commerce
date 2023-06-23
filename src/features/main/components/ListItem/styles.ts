@@ -165,11 +165,7 @@ export const ItemName = styled(Link)`
   ${({ theme }) => theme.mixins.fs16};
   font-weight: 400;
   color: var(--dark-gray);
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-align: center;
+ ${({theme}) => theme.mixins.oneLineText};
   margin-inline: auto;
   transition: var(--transition);
 

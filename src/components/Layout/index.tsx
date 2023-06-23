@@ -22,7 +22,7 @@ const Layout = ({ children }: Props) => {
         withGlobalStyles
         withNormalizeCSS
         theme={{
-          fontFamily: "'Roboto', sans-serif",
+          fontFamily: "'Montserrat', sans-serif",
           breakpoints: {
             xs: '30em',
             sm: '48em',

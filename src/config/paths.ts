@@ -1,4 +1,6 @@
 export const Paths = {
+  MAIN: '/',
   LOGIN: '/login',
-  MAIN: '/'
+  CART: '/cart',
+  ORDER: '/order'
 };

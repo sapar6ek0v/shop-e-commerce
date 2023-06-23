@@ -31,6 +31,19 @@ const mixins = {
   fs16: css`
     font-size: 16px;
     line-height: 18px;
+  `,
+
+  fs20: css`
+    font-size: 20px;
+    line-height: 24px;
+  `,
+
+  oneLineText: css`
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-align: center;
   `
 };
 

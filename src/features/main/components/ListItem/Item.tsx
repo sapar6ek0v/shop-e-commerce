@@ -4,6 +4,7 @@ import { Group } from '@mantine/core';
 import { Product } from '../../../../store/apis/products/types'
 import { useAppDispatch } from '../../../../lib/useAppDispatch';
 import { addToCart } from '../../../../store/slices/products';
+import { showStarsByRating } from '../../../../utils/showStarsByRating';
 import {
   ItemImgWrapper,
   ItemInfoStack,
@@ -24,7 +25,7 @@ const Item = ({ product }: Props) => {
   const dispatch = useAppDispatch();
 
   const { rating, image, title, price } = product;
-  const rate = [...Array(Math.round(rating.rate)).keys()];
+  const rate = showStarsByRating(rating.rate)
 
   return (
     <ItemWrapper>
@@ -50,7 +51,7 @@ const Item = ({ product }: Props) => {
             )}
           </Group>
         </div>
-        <ItemPrice>${price}</ItemPrice>
+        <ItemPrice>$&nbsp;{price}</ItemPrice>
       </ItemInfoStack>
     </ItemWrapper>
   )
