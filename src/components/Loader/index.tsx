@@ -1,8 +1,7 @@
-import React from 'react';
 import { LoaderWrapper, Line } from './styles';
 
 interface Props {
-  isCentered?: boolean
+  isCentered?: boolean;
 }
 
 const Loader = ({ isCentered = false }: Props) => {
@@ -14,7 +13,7 @@ const Loader = ({ isCentered = false }: Props) => {
             <Line>
               <Line>
                 <Line>
-                  <Line></Line>
+                  <Line />
                 </Line>
               </Line>
             </Line>

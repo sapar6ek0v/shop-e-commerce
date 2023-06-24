@@ -1,1 +1,2 @@
-export const maskBankCard = (card: string) => card.replace(/^[\d-\s]+(?=\d{4})/, '************');
+export const maskBankCard = (card: string) =>
+  card.replace(/^[\d-\s]+(?=\d{4})/, '************');

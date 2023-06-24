@@ -8,16 +8,24 @@ import { sortByPriceOrName } from '../../../utils/sortByPriceOrName';
 
 export function useProducts() {
   const dispatch = useAppDispatch();
-  const { products, byName, byPrice, byPriceOrName } = useAppSelector((store) => store.product);
+  const { products, byName, byPrice, byPriceOrName } = useAppSelector(
+    (store) => store.product
+  );
 
   const { data, isLoading } = useGetAllProductsQuery();
 
   useEffect(() => {
     if (data) {
-      const sortedProducts = sortByPriceOrName(byPriceOrName, byName, byPrice, data);
+      const sortedProducts = sortByPriceOrName(
+        byPriceOrName,
+        byName,
+        byPrice,
+        data
+      );
 
       dispatch(setProducts(sortedProducts));
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, byName, byPrice, byPriceOrName]);
 
   return { products, isLoading };

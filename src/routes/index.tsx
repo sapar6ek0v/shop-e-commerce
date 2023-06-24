@@ -1,4 +1,3 @@
-import React from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 
 import Layout from '../components/Layout';
@@ -7,14 +6,15 @@ import { useAppSelector } from '../lib/useAppSelector';
 import { protectedRoutes } from './protected';
 import { publicRoutes } from './public';
 
-
 export const AppRoutes = () => {
   const { isLoggedIn } = useAppSelector((store) => store.auth);
 
-  const commonRoutes = [{
-    path: '*',
-    element: <Navigate to={Paths.LOGIN} />
-  }]
+  const commonRoutes = [
+    {
+      path: '*',
+      element: <Navigate to={Paths.LOGIN} />,
+    },
+  ];
 
   const routes = isLoggedIn ? protectedRoutes : publicRoutes;
 

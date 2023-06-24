@@ -1,7 +1,6 @@
-import React from 'react'
-import SEO from '../../components/SEO'
-import { Paths } from '../../config/paths'
-import ListItem from './components/ListItem'
+import SEO from '../../components/SEO';
+import { Paths } from '../../config/paths';
+import ListItem from './components/ListItem';
 
 const Main = () => {
   return (
@@ -16,7 +15,7 @@ const Main = () => {
       />
       <ListItem />
     </>
-  )
-}
+  );
+};
 
-export default Main
+export default Main;

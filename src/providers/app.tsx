@@ -7,7 +7,6 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from '../store';
 import Loader from '../components/Loader';
 
-
 type AppProviderProps = {
   children: React.ReactNode;
 };

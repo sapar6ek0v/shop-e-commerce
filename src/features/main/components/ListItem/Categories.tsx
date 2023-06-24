@@ -1,8 +1,6 @@
-import React from 'react'
-
-import { useGetAllCategoriesQuery } from '../../../../store/apis/products'
+import { useGetAllCategoriesQuery } from '../../../../store/apis/products';
 import { showTextByCategory } from '../../../../utils/showTextByCategory';
-import { CategoriesGroup, CategoriesLoadingText, CategoryItem } from './styles'
+import { CategoriesGroup, CategoriesLoadingText, CategoryItem } from './styles';
 
 interface Props {
   currentCategory: string;
@@ -13,23 +11,23 @@ const Categories = ({ currentCategory }: Props) => {
 
   return (
     <CategoriesGroup>
-      {!isLoading && categories ?
+      {!isLoading && categories ? (
         <>
-          <CategoryItem $isActive>
-            Все
-          </CategoryItem>
-          {categories.map((category, idx) => (
+          <CategoryItem $isActive>Все</CategoryItem>
+          {categories.map((category) => (
             <CategoryItem
-              key={`${category}-${idx}`}
+              key={category}
               $isActive={currentCategory === category}
             >
               {showTextByCategory(category)}
             </CategoryItem>
           ))}
-        </> :
-        <CategoriesLoadingText>Загрузка...</CategoriesLoadingText>}
+        </>
+      ) : (
+        <CategoriesLoadingText>Загрузка...</CategoriesLoadingText>
+      )}
     </CategoriesGroup>
-  )
-}
+  );
+};
 
-export default Categories
+export default Categories;

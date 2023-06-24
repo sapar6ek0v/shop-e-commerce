@@ -1,14 +1,18 @@
-import React, { forwardRef, Ref } from 'react';
+import { forwardRef, Ref } from 'react';
 import {
   PasswordInput as MantinePasswordInput,
   PasswordInputProps,
 } from '@mantine/core';
 import { IconEyeCheck, IconEyeOff } from '@tabler/icons-react';
 
-const PasswordInput = (props: PasswordInputProps, ref?: Ref<HTMLInputElement>) => (
+const PasswordInput = (
+  props: PasswordInputProps,
+  ref?: Ref<HTMLInputElement>
+) => (
   <MantinePasswordInput
     {...props}
     ref={ref}
+    // eslint-disable-next-line react/no-unstable-nested-components
     visibilityToggleIcon={({ reveal, size }) =>
       reveal ? <IconEyeCheck size={size} /> : <IconEyeOff size={size} />
     }

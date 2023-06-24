@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react';
 import { MantineProvider } from '@mantine/core';
 import { ThemeProvider } from 'styled-components';
 
@@ -11,7 +11,7 @@ import { ContentWrapper } from './styles';
 
 interface Props {
   children: ReactNode;
-};
+}
 
 const Layout = ({ children }: Props) => {
   const { isLoggedIn } = useAppSelector((store) => store.auth);
@@ -34,13 +34,11 @@ const Layout = ({ children }: Props) => {
       >
         <GlobalStyles />
         {isLoggedIn && <Header />}
-        <ContentWrapper>
-          {children}
-        </ContentWrapper>
+        <ContentWrapper>{children}</ContentWrapper>
         {isLoggedIn && <Footer />}
       </MantineProvider>
     </ThemeProvider>
   );
 };
 
-export default Layout
+export default Layout;

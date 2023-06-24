@@ -2,7 +2,8 @@ import { Cart } from '../types';
 
 export const decreaseQuantity = (cart: Cart[], productId: number): Cart[] => {
   let basket: Cart[] = [];
-  const quantity = cart.find((item) => item.id === productId)?.quantity as number;
+  const quantity = cart.find((item) => item.id === productId)
+    ?.quantity as number;
 
   if (cart.some((item) => item.id === productId)) {
     if (quantity > 1) {

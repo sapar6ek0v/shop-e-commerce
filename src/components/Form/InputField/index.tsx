@@ -1,8 +1,5 @@
-import React, { forwardRef, Ref } from 'react';
-import {
-  TextInput as MantineTextInput,
-  TextInputProps,
-} from '@mantine/core';
+import { forwardRef, Ref } from 'react';
+import { TextInput as MantineTextInput, TextInputProps } from '@mantine/core';
 
 const TextInput = (props: TextInputProps, ref?: Ref<HTMLInputElement>) => (
   <MantineTextInput

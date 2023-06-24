@@ -17,5 +17,5 @@ export enum Categories {
   ELECTRONICS = 'electronics',
   JEWERELY = 'jewelery',
   MEN_S_CLOTH = "men's clothing",
-  WOMEN_S_CLOTH = "women's clothing"
+  WOMEN_S_CLOTH = "women's clothing",
 }

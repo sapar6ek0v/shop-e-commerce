@@ -1,6 +1,5 @@
-import React from 'react'
-import bag from '../../../../assets/bag.png'
-import { TitleGroup, TitleLogoWrapper, TitleText } from './styles'
+import bag from '../../../../assets/bag.png';
+import { TitleGroup, TitleLogoWrapper, TitleText } from './styles';
 
 const Title = () => {
   return (
@@ -11,7 +10,7 @@ const Title = () => {
 
       <TitleText>НОВОЕ ПОСТУПЛЕНИЕ</TitleText>
     </TitleGroup>
-  )
-}
+  );
+};
 
-export default Title
+export default Title;

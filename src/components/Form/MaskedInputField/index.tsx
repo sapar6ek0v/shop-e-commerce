@@ -1,4 +1,4 @@
-import React from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { IMaskMixin } from 'react-imask';
 import { TextInput as MantineTextInput } from '@mantine/core';
 

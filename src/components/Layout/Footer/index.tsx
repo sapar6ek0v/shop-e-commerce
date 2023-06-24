@@ -1,10 +1,9 @@
-import React from 'react'
 import { NavLink } from 'react-router-dom';
 
 import logo from '../../../assets/white-logo.png';
 import { Paths } from '../../../config/paths';
 import { Container } from '../styles';
-import { Description, FooterStack, FooterWrapper } from './styles'
+import { Description, FooterStack, FooterWrapper } from './styles';
 
 const Footer = () => {
   return (
@@ -15,12 +14,13 @@ const Footer = () => {
             <img src={logo} alt="company-logo" />
           </NavLink>
           <Description>
-            Shopin — это новая трендовая одежда из хороших материалов и по доступной цене.
+            Shopin — это новая трендовая одежда из хороших материалов и по
+            доступной цене.
           </Description>
         </FooterStack>
       </Container>
     </FooterWrapper>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

@@ -1,7 +1,6 @@
-import React from 'react'
 import { Group } from '@mantine/core';
 
-import { Product } from '../../../../store/apis/products/types'
+import { Product } from '../../../../store/apis/products/types';
 import { useAppDispatch } from '../../../../lib/useAppDispatch';
 import { addToCart } from '../../../../store/slices/products';
 import { showStarsByRating } from '../../../../utils/showStarsByRating';
@@ -14,7 +13,7 @@ import {
   ItemName,
   ItemPrice,
   ItemWrapper,
-  Star
+  Star,
 } from './styles';
 
 interface Props {
@@ -25,16 +24,16 @@ const Item = ({ product }: Props) => {
   const dispatch = useAppDispatch();
 
   const { rating, image, title, price } = product;
-  const rate = showStarsByRating(rating.rate)
+  const rate = showStarsByRating(rating.rate);
 
   return (
     <ItemWrapper>
       <ItemImgWrapper>
         <img src={image} alt={title} />
-        <ItemHover className='bgBlack' />
+        <ItemHover className="bgBlack" />
         <ItemHotAndSale className="hotAndSale">-65%</ItemHotAndSale>
         <ItemAddBtn
-          onClick={() => dispatch(addToCart(product as any))}
+          onClick={() => dispatch(addToCart(product))}
           type="button"
           className="addBtn"
         >
@@ -46,15 +45,15 @@ const Item = ({ product }: Props) => {
         <div>
           <ItemName to="#">{title}</ItemName>
           <Group spacing={4} position="center">
-            {rate.map((it, idx) =>
-              <Star key={`${it}-${idx}`} />
-            )}
+            {rate.map((it) => (
+              <Star key={it} />
+            ))}
           </Group>
         </div>
         <ItemPrice>$&nbsp;{price}</ItemPrice>
       </ItemInfoStack>
     </ItemWrapper>
-  )
-}
+  );
+};
 
-export default Item
+export default Item;

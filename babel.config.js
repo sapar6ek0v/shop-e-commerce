@@ -3,8 +3,11 @@ module.exports = (api) => {
   return {
     presets: [
       '@babel/preset-env',
-      ['@babel/preset-react', { development: !api.env('production'), runtime: 'automatic' }]
+      [
+        '@babel/preset-react',
+        { development: !api.env('production'), runtime: 'automatic' },
+      ],
     ],
-    ...(!api.env('production') && { plugins: ['react-refresh/babel'] })
+    ...(!api.env('production') && { plugins: ['react-refresh/babel'] }),
   };
 };

@@ -49,7 +49,7 @@ const mixins = {
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-align: center;
-  `
+  `,
 };
 
 export default mixins;

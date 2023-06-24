@@ -1,19 +1,19 @@
-import React, { FormEvent, useEffect, useState } from 'react'
+import { FormEvent, useEffect, useState } from 'react';
 import { IconMapPinFilled } from '@tabler/icons-react';
 import { useDebouncedValue } from '@mantine/hooks';
 import { Center } from '@mantine/core';
-import { Map, Draggable, Point } from "pigeon-maps";
-import Geocode from "react-geocode";
+import { Map, Draggable, Point } from 'pigeon-maps';
+import Geocode from 'react-geocode';
 
 import { API_KEY } from '../../../../config/api';
 import { AddressFormWrapper, Button } from './styles';
 
 Geocode.setApiKey(API_KEY);
-Geocode.setLanguage("ru");
-Geocode.setRegion("ru");
+Geocode.setLanguage('ru');
+Geocode.setRegion('ru');
 
 interface Props {
-  setAddressData: (value: any) => void;
+  setAddressData: (value: string) => void;
   nextStep: () => void;
 }
 
@@ -26,16 +26,17 @@ const AddressForm = ({ setAddressData, nextStep }: Props) => {
     event.preventDefault();
     setAddressData(address);
     nextStep();
-  }
+  };
 
   useEffect(() => {
     const getAddress = () => {
       Geocode.fromLatLng(String(debounced[0]), String(debounced[1])).then(
         (response) => {
-          const address = response.results[0].formatted_address;
-          setAddress(address);
+          const addressByMap = response.results[0].formatted_address;
+          setAddress(addressByMap);
         },
         (error) => {
+          // eslint-disable-next-line no-console
           console.error(error);
         }
       );
@@ -56,7 +57,7 @@ const AddressForm = ({ setAddressData, nextStep }: Props) => {
         <Button disabled={!address}>Оплатить</Button>
       </Center>
     </AddressFormWrapper>
-  )
-}
+  );
+};
 
-export default AddressForm
+export default AddressForm;

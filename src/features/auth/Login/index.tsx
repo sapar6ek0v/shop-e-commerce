@@ -1,4 +1,3 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useForm, zodResolver } from '@mantine/form';
 import { z } from 'zod';
@@ -14,17 +13,17 @@ import {
   Centered,
   ContentWrapper,
   FormWrapper,
-  WelcomeTitle
-} from './styles'
+  WelcomeTitle,
+} from './styles';
 
 const user = {
   name: 'User',
-  password: '12345'
+  password: '12345',
 };
 
 const LoginSchema = z.object({
   username: z.string().min(3, 'Пожалуйста, введите имя!'),
-  password: z.string().min(3, 'Пожалуйста, введите пароль!')
+  password: z.string().min(3, 'Пожалуйста, введите пароль!'),
 });
 
 type LoginFormValues = z.infer<typeof LoginSchema>;
@@ -49,17 +48,19 @@ const Login = () => {
     if (user.name !== values.username) {
       form.setFieldError('username', 'Неправильное имя пользователя!');
       return;
-    };
+    }
 
     if (user.password !== values.password) {
       form.setFieldError('password', 'Неправильный пароль!');
       return;
     }
 
-    dispatch(setCredentials({ user: values.username, isLoggedIn: !!values.username }));
+    dispatch(
+      setCredentials({ user: values.username, isLoggedIn: !!values.username })
+    );
     navigate(Paths.MAIN, { replace: true });
     form.reset();
-  }
+  };
 
   return (
     <>
@@ -76,13 +77,16 @@ const Login = () => {
           <FormWrapper onSubmit={form.onSubmit(handleSubmit)}>
             <WelcomeTitle>Добро пожаловать!</WelcomeTitle>
             <InputField placeholder="Имя" {...form.getInputProps('username')} />
-            <PasswordInputField placeholder="Пароль" {...form.getInputProps('password')} />
+            <PasswordInputField
+              placeholder="Пароль"
+              {...form.getInputProps('password')}
+            />
             <Button>Войти</Button>
           </FormWrapper>
         </ContentWrapper>
       </Centered>
     </>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;

@@ -1,17 +1,17 @@
-import React from 'react'
-import { Group } from '@mantine/core'
+import { Group } from '@mantine/core';
 import { useNavigate } from 'react-router-dom';
 
-import { useAppSelector } from '../../../../lib/useAppSelector'
+import { useAppSelector } from '../../../../lib/useAppSelector';
 import { Paths } from '../../../../config/paths';
-import { FooterTitle, FooterWrapper, PaymentBtn, TotalPrice } from './styles'
+import { FooterTitle, FooterWrapper, PaymentBtn, TotalPrice } from './styles';
 
 const Footer = () => {
   const navigate = useNavigate();
   const { cart } = useAppSelector((store) => store.product);
 
-  const totalPrice = cart ?
-    cart.reduce((acc, item) => (acc + (item.price * item.quantity)), 0).toFixed(2) : 0
+  const totalPrice = cart
+    ? cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)
+    : 0;
 
   return (
     <FooterWrapper>
@@ -21,10 +21,12 @@ const Footer = () => {
       </Group>
 
       <Group position="right">
-        <PaymentBtn onClick={() => navigate(Paths.ORDER)} type="button">Оплатить</PaymentBtn>
+        <PaymentBtn onClick={() => navigate(Paths.ORDER)} type="button">
+          Оплатить
+        </PaymentBtn>
       </Group>
     </FooterWrapper>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

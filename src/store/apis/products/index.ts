@@ -2,21 +2,21 @@ import { baseApi } from '..';
 import { Product } from './types';
 
 const productsTags = baseApi.enhanceEndpoints({
-  addTagTypes: ['Products', 'Categories']
+  addTagTypes: ['Products', 'Categories'],
 });
 
 const productsApi = productsTags.injectEndpoints({
   endpoints: (build) => ({
     getAllCategories: build.query<string[], void>({
       query: () => '/products/categories',
-      providesTags: ['Categories']
+      providesTags: ['Categories'],
     }),
 
     getAllProducts: build.query<Product[], void>({
       query: () => '/products',
-      providesTags: ['Products']
-    })
-  })
+      providesTags: ['Products'],
+    }),
+  }),
 });
 
 export const { useGetAllCategoriesQuery, useGetAllProductsQuery } = productsApi;

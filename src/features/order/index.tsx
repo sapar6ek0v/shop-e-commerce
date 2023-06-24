@@ -1,7 +1,6 @@
-import React from 'react'
-import SEO from '../../components/SEO'
-import { Paths } from '../../config/paths'
-import Stepper from './components/Stepper'
+import SEO from '../../components/SEO';
+import { Paths } from '../../config/paths';
+import Stepper from './components/Stepper';
 
 const Order = () => {
   return (
@@ -16,7 +15,7 @@ const Order = () => {
       />
       <Stepper />
     </>
-  )
-}
+  );
+};
 
-export default Order
+export default Order;

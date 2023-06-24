@@ -1,4 +1,3 @@
-import React from 'react';
 import { Stack } from '@mantine/core';
 
 import { Container } from '../../../../components/Layout/styles';
@@ -15,20 +14,23 @@ const ListItem = () => {
   return (
     <Container>
       <ListItemWrapper>
-        {cart && cart.length > 0 ?
+        {cart && cart.length > 0 ? (
           <>
             <Stack spacing={0}>
               <Header />
-              {cart.map((item) => (<Item key={item.id} item={item} />))}
+              {cart.map((item) => (
+                <Item key={item.id} item={item} />
+              ))}
             </Stack>
 
             <Footer />
-          </> :
+          </>
+        ) : (
           <BackLink to={Paths.MAIN}>Корзина пуста!</BackLink>
-        }
+        )}
       </ListItemWrapper>
     </Container>
-  )
-}
+  );
+};
 
-export default ListItem
+export default ListItem;

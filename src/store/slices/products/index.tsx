@@ -51,7 +51,7 @@ export const productSlice = createSlice({
       state.byPrice = -byPrice;
     },
   },
-  extraReducers: () => { }
+  extraReducers: () => {},
 });
 
 export const {
@@ -60,6 +60,6 @@ export const {
   addToCart,
   deleteFromCart,
   sortByName,
-  sortByPrice
+  sortByPrice,
 } = productSlice.actions;
 export default productSlice.reducer;

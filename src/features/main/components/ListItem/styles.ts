@@ -58,7 +58,8 @@ type CategoryProps = {
 
 export const CategoryItem = styled.li<CategoryProps>`
   cursor: pointer;
-  color: ${(props) => (props.$isActive ? 'var(--white-blue)' : 'var(--dark-gray)')};
+  color: ${(props) =>
+    props.$isActive ? 'var(--white-blue)' : 'var(--dark-gray)'};
   ${({ theme }) => theme.mixins.fs16};
   font-weight: 700;
   text-transform: uppercase;

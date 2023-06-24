@@ -1,11 +1,10 @@
-import React from 'react'
 import { useForm, zodResolver } from '@mantine/form';
 import { z } from 'zod';
 
-import InputField from '../../../../components/Form/InputField'
+import InputField from '../../../../components/Form/InputField';
 import MaskedTextInput from '../../../../components/Form/MaskedInputField';
 import { RegEx } from '../../../../utils/regex';
-import { Button, PersonalDataWrapper, PersonalDataGrid } from './styles'
+import { Button, PersonalDataWrapper, PersonalDataGrid } from './styles';
 
 interface InputProps {
   placeholder: string;
@@ -17,14 +16,17 @@ const Input = ({ placeholder, ...props }: InputProps) => {
       {...props}
       placeholder={placeholder}
       sx={{ input: { background: 'var(--secondary-gray)' } }}
-    />)
-}
+    />
+  );
+};
 
 const PersonalDataSchema = z.object({
   firstName: z.string().min(3, 'Пожалуйста, введите имя!'),
   lastName: z.string().min(3, 'Пожалуйста, введите фамилию!'),
   email: z.string().email('Пожалуйста, введите правильный формат почты!'),
-  phone: z.string().regex(RegEx.phone, 'Пожалуйста, введите правильный формат телефона!')
+  phone: z
+    .string()
+    .regex(RegEx.phone, 'Пожалуйста, введите правильный формат телефона!'),
 });
 
 export type PersonalDataValues = z.infer<typeof PersonalDataSchema>;
@@ -56,18 +58,18 @@ const PersonalDataForm = ({ setPersonalData, nextStep }: Props) => {
   return (
     <PersonalDataWrapper onSubmit={form.onSubmit(handleSubmit)}>
       <PersonalDataGrid>
-        <Input {...form.getInputProps('firstName')} placeholder='Имя' />
-        <Input {...form.getInputProps('lastName')} placeholder='Фамилия' />
-        <Input {...form.getInputProps('email')} placeholder='Почта' />
+        <Input {...form.getInputProps('firstName')} placeholder="Имя" />
+        <Input {...form.getInputProps('lastName')} placeholder="Фамилия" />
+        <Input {...form.getInputProps('email')} placeholder="Почта" />
         <MaskedTextInput
           {...form.getInputProps('phone')}
-          placeholder='+7 (000) 000 00 00'
-          mask='+7 (000) 000 00 00'
+          placeholder="+7 (000) 000 00 00"
+          mask="+7 (000) 000 00 00"
         />
       </PersonalDataGrid>
       <Button>Следующий</Button>
     </PersonalDataWrapper>
-  )
-}
+  );
+};
 
-export default PersonalDataForm
+export default PersonalDataForm;

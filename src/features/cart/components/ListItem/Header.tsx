@@ -1,14 +1,15 @@
-import React from 'react'
-import { HeaderWrapper, HeaderTitle } from './styles'
+import { HeaderWrapper, HeaderTitle } from './styles';
 
 const Header = () => {
   const list = ['ИНФОРМАЦИЯ О ПРОДУКТЕ', 'ЦЕНА', 'КОЛИЧЕСТВО', 'ОБЩЕЕ'];
 
   return (
     <HeaderWrapper>
-      {list.map((item, idx) => <HeaderTitle key={`${item}-${idx}`}>{item}</HeaderTitle>)}
+      {list.map((item) => (
+        <HeaderTitle key={item}>{item}</HeaderTitle>
+      ))}
     </HeaderWrapper>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

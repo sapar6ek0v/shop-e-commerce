@@ -4,7 +4,7 @@ import { Credentials, InitialState } from './types';
 
 const initialState = {
   user: null,
-  isLoggedIn: false
+  isLoggedIn: false,
 } as InitialState;
 
 export const authSlice = createSlice({
@@ -14,9 +14,9 @@ export const authSlice = createSlice({
     setCredentials: (state, { payload }: PayloadAction<Credentials>) => {
       state.user = payload.user;
       state.isLoggedIn = payload.isLoggedIn;
-    }
+    },
   },
-  extraReducers: () => {}
+  extraReducers: () => {},
 });
 
 export const { setCredentials } = authSlice.actions;

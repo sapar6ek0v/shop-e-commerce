@@ -1,1 +1,3 @@
-export const showStarsByRating = (rate: number) => [...Array(Math.round(rate)).keys()];
+export const showStarsByRating = (rate: number) => [
+  ...Array(Math.round(rate)).keys(),
+];

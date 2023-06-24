@@ -1,10 +1,9 @@
-import React from 'react'
-import { Group } from '@mantine/core'
+import { Group } from '@mantine/core';
 import { IconMinus, IconPlus } from '@tabler/icons-react';
 
-import { Cart } from '../../../../store/slices/products/types'
+import { Cart } from '../../../../store/slices/products/types';
 import { addToCart, deleteFromCart } from '../../../../store/slices/products';
-import { showStarsByRating } from '../../../../utils/showStarsByRating'
+import { showStarsByRating } from '../../../../utils/showStarsByRating';
 import { useAppDispatch } from '../../../../lib/useAppDispatch';
 import {
   Button,
@@ -16,11 +15,11 @@ import {
   ItemName,
   ItemPrice,
   ItemQuantity,
-  Star
-} from './styles'
+  Star,
+} from './styles';
 
 interface Props {
-  item: Cart
+  item: Cart;
 }
 
 const Item = ({ item }: Props) => {
@@ -28,7 +27,7 @@ const Item = ({ item }: Props) => {
 
   const { id, rating, image, title, price, quantity } = item;
 
-  const rate = showStarsByRating(rating.rate)
+  const rate = showStarsByRating(rating.rate);
 
   const totalPrice = quantity ? (price * quantity).toFixed(2) : 0;
 
@@ -42,16 +41,14 @@ const Item = ({ item }: Props) => {
         <ItemInfoStack>
           <ItemName>{title}</ItemName>
           <Group spacing={4} position="center">
-            {rate.map((it, idx) =>
-              <Star key={`${it}-${idx}`} />
-            )}
+            {rate.map((it) => (
+              <Star key={it} />
+            ))}
           </Group>
         </ItemInfoStack>
       </ItemInfoWrapper>
 
-      <ItemPrice>
-        $&nbsp;{price}
-      </ItemPrice>
+      <ItemPrice>$&nbsp;{price}</ItemPrice>
 
       <ButtonGroup>
         <Button onClick={() => dispatch(deleteFromCart(id))} type="button">
@@ -63,11 +60,9 @@ const Item = ({ item }: Props) => {
         </Button>
       </ButtonGroup>
 
-      <ItemPrice>
-        $&nbsp;{totalPrice}
-      </ItemPrice>
+      <ItemPrice>$&nbsp;{totalPrice}</ItemPrice>
     </ListItemGrid>
-  )
-}
+  );
+};
 
-export default Item
+export default Item;

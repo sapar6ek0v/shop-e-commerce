@@ -1,4 +1,4 @@
-import React, { lazy } from 'react';
+import { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 
 import { Paths } from '../config/paths';
@@ -22,6 +22,6 @@ export const protectedRoutes = [
   },
   {
     path: '*',
-    element: <Navigate to={Paths.MAIN} />
+    element: <Navigate to={Paths.MAIN} />,
   },
 ];
