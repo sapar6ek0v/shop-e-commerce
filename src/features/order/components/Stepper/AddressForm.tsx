@@ -1,6 +1,7 @@
 import React, { FormEvent, useEffect, useState } from 'react'
 import { IconMapPinFilled } from '@tabler/icons-react';
 import { useDebouncedValue } from '@mantine/hooks';
+import { Center } from '@mantine/core';
 import { Map, Draggable, Point } from "pigeon-maps";
 import Geocode from "react-geocode";
 
@@ -51,7 +52,9 @@ const AddressForm = ({ setAddressData, nextStep }: Props) => {
         </Draggable>
       </Map>
       <p>{address}</p>
-      <Button disabled={!address}>Оплатить</Button>
+      <Center>
+        <Button disabled={!address}>Оплатить</Button>
+      </Center>
     </AddressFormWrapper>
   )
 }
