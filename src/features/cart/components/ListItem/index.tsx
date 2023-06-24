@@ -2,15 +2,15 @@ import React from 'react';
 import { Stack } from '@mantine/core';
 
 import { Container } from '../../../../components/Layout/styles';
-import { useAppSelector } from '../../../../lib/useAppSelector';
 import { Paths } from '../../../../config/paths';
+import { useCart } from '../../lib/useCart';
 import Header from './Header';
 import Footer from './Footer';
 import Item from './Item';
 import { BackLink, ListItemWrapper } from './styles';
 
 const ListItem = () => {
-  const { cart } = useAppSelector((store) => store.product);
+  const { cart } = useCart();
 
   return (
     <Container>

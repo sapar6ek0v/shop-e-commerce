@@ -1,7 +1,15 @@
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
+import { IconMapPinFilled } from '@tabler/icons-react';
+import { useDebouncedValue } from '@mantine/hooks';
 import { Map, Draggable, Point } from "pigeon-maps";
+import Geocode from "react-geocode";
 
+import { API_KEY } from '../../../../config/api';
 import { AddressFormWrapper, Button } from './styles';
+
+Geocode.setApiKey(API_KEY);
+Geocode.setLanguage("ru");
+Geocode.setRegion("ru");
 
 interface Props {
   setAddressData: (value: any) => void;
@@ -9,22 +17,41 @@ interface Props {
 }
 
 const AddressForm = ({ setAddressData, nextStep }: Props) => {
-  const [anchor, setAnchor] = useState<Point>([50.879, 4.6997]);
+  const [address, setAddress] = useState<string>('');
+  const [anchor, setAnchor] = useState<Point>([55.755834, 37.617778]);
+  const [debounced] = useDebouncedValue(anchor, 200);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    setAddressData(anchor);
+    setAddressData(address);
     nextStep();
   }
 
+  useEffect(() => {
+    const getAddress = () => {
+      Geocode.fromLatLng(String(debounced[0]), String(debounced[1])).then(
+        (response) => {
+          const address = response.results[0].formatted_address;
+          setAddress(address);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    };
+
+    getAddress();
+  }, [debounced]);
+
   return (
     <AddressFormWrapper onSubmit={handleSubmit}>
-      <Map height={300} defaultCenter={[50.879, 4.6997]} defaultZoom={11}>
-        <Draggable offset={[60, 87]} anchor={anchor} onDragEnd={setAnchor}>
-          <img src="pigeon.svg" width={100} height={95} alt="Pigeon!" />
+      <Map height={300} defaultCenter={[55.755834, 37.617778]} defaultZoom={11}>
+        <Draggable offset={[30, 34]} anchor={anchor} onDragEnd={setAnchor}>
+          <IconMapPinFilled color="var(--white-blue)" size={40} />
         </Draggable>
       </Map>
-      <Button>Оплатить</Button>
+      <p>{address}</p>
+      <Button disabled={!address}>Оплатить</Button>
     </AddressFormWrapper>
   )
 }

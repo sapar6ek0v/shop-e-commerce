@@ -1,4 +1,5 @@
 import React from 'react'
+import { Center } from '@mantine/core';
 import { useForm, zodResolver } from '@mantine/form';
 import { z } from 'zod';
 
@@ -13,8 +14,7 @@ const BankCardSchema = z.object({
   cardNumber: z.string().regex(RegEx.cardNumber, 'Пожалуйста, введите правильный формат номера карты!')
 });
 
-type BankCardValues = z.infer<typeof BankCardSchema>;
-
+export type BankCardValues = z.infer<typeof BankCardSchema>;
 interface Props {
   setBankData: (value: BankCardValues) => void;
   nextStep: () => void;
@@ -52,7 +52,9 @@ const BankCardForm = ({ setBankData, nextStep }: Props) => {
         <MaskedTextInput {...form.getInputProps('year')} mask="0000" placeholder="Год" />
         <MaskedTextInput {...form.getInputProps('cvv')} mask="0000" placeholder="CVV" />
       </BankCardGrid>
-      <Button>Следующий</Button>
+      <Center>
+        <Button>Следующий</Button>
+      </Center>
     </BankCardWrapper>
   )
 }

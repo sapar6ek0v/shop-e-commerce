@@ -52,7 +52,7 @@ const Login = () => {
     };
 
     if (user.password !== values.password) {
-      form.setFieldError('password', 'Пароли не совпадают!');
+      form.setFieldError('password', 'Неправильный пароль!');
       return;
     }
 

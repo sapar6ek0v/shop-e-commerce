@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const ReactRefreshPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -61,6 +62,9 @@ module.exports = {
     !prod && new ReactRefreshPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html'
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
     })
   ].filter(Boolean)
 };

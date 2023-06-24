@@ -27,8 +27,7 @@ const PersonalDataSchema = z.object({
   phone: z.string().regex(RegEx.phone, 'Пожалуйста, введите правильный формат телефона!')
 });
 
-type PersonalDataValues = z.infer<typeof PersonalDataSchema>;
-
+export type PersonalDataValues = z.infer<typeof PersonalDataSchema>;
 interface Props {
   setPersonalData: (value: PersonalDataValues) => void;
   nextStep: () => void;

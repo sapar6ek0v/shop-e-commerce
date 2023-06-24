@@ -32,3 +32,20 @@ export const QuantityCounter = styled.span`
   border-radius: 50%;
   background: var(--red);
 `;
+
+type SortButtonProps = {
+  $isActive: boolean;
+};
+
+export const SortButton = styled.button<SortButtonProps>`
+  color: ${(props) => (props.$isActive ? 'var(--white-blue)' : 'var(--black)')};
+  ${({ theme }) => theme.mixins.fCenter};
+  border: none;
+  background: transparent;
+  transition: all 0.4s linear;
+
+  &:is(:hover, :active, :focus) {
+    color: var(--white-blue);
+    outline: none;
+  }
+`;

@@ -50,3 +50,37 @@ export const BankCardGrid = styled.div`
 `;
 
 export const AddressFormWrapper = styled(BaseFormWrapper)``;
+
+export const ResultTitle = styled.p`
+  ${({ theme }) => theme.mixins.fs16};
+  color: var(--dark-gray);
+  font-weight: 400;
+
+  strong {
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .price {
+    font-style: italic;
+    color: var(--white-blue);
+  }
+`;
+
+export const BackButton = styled.button`
+  height: 40px;
+  ${({ theme }) => theme.mixins.fCenter};
+  ${({ theme }) => theme.mixins.fs16};
+  font-weight: 600;
+  color: var(--white-blue);
+  text-transform: uppercase;
+  border: 1px solid var(--white-blue);
+  background: transparent;
+  transition: var(--transition);
+
+  &:is(:hover, :active, :focus) {
+    outline: none;
+    color: var(--white);
+    background: var(--white-blue);
+  }
+`;
