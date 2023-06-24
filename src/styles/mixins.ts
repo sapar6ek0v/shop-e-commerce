@@ -23,6 +23,11 @@ const mixins = {
     justify-content: center;
   `,
 
+  fs12: css`
+    font-size: 12px;
+    line-height: 14px;
+  `,
+
   fs14: css`
     font-size: 14px;
     line-height: 16px;

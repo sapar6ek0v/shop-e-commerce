@@ -1,18 +1,17 @@
 import React from 'react'
 import { NavLink, useNavigate } from 'react-router-dom';
 import { IconShoppingCart } from '@tabler/icons-react';
-import { UnstyledButton } from '@mantine/core';
 
-import logo from '../../../assets/logo.svg';
+import logo from '../../../assets/black-logo.png';
 import { Paths } from '../../../config/paths';
 import { useAppSelector } from '../../../lib/useAppSelector';
 import { Container } from '../styles'
-import { HeaderApartContainer, HeaderWrapper } from './styles'
+import { Button, HeaderApartContainer, HeaderWrapper, QuantityCounter } from './styles'
 
 const Header = () => {
   const navigate = useNavigate();
   const { cart } = useAppSelector((store) => store.product);
-  console.log({ cart });
+
   return (
     <HeaderWrapper>
       <Container>
@@ -21,9 +20,10 @@ const Header = () => {
             <img src={logo} alt="company-logo" />
           </NavLink>
 
-          <UnstyledButton onClick={() => navigate(Paths.CART)}>
+          <Button onClick={() => navigate(Paths.CART)} type="button">
             <IconShoppingCart />
-          </UnstyledButton>
+            {cart && cart.length > 0 && <QuantityCounter>{cart.length}</QuantityCounter>}
+          </Button>
         </HeaderApartContainer>
       </Container>
     </HeaderWrapper>

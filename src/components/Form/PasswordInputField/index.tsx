@@ -10,7 +10,7 @@ const PasswordInput = (props: PasswordInputProps, ref?: Ref<HTMLInputElement>) =
     {...props}
     ref={ref}
     visibilityToggleIcon={({ reveal, size }) =>
-      reveal ? <IconEyeOff size={size} /> : <IconEyeCheck size={size} />
+      reveal ? <IconEyeCheck size={size} /> : <IconEyeOff size={size} />
     }
     styles={{
       wrapper: {
@@ -24,7 +24,7 @@ const PasswordInput = (props: PasswordInputProps, ref?: Ref<HTMLInputElement>) =
         border: 'none',
         borderRadius: 0,
         backgroundColor: 'var(--white)',
-        
+
         padding: 15,
 
         '&::focus': {

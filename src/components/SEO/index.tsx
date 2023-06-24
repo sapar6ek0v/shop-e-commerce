@@ -6,14 +6,20 @@ interface Props {
   description: string;
   name: string;
   type: string;
+  keywords: string;
+  href: string;
 }
 
-const SEO = ({ title, description, name, type }: Props) => {
+const SEO = ({ title, description, name, type, keywords, href }: Props) => {
   return (
     <Helmet>
       {/* Standard metadata tags */}
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
+      <meta name="author" content={name} />
+      <meta name="theme-color" content="#57cebf" />
+      <meta name="robots" content="index, follow" />
       {/* End standard metadata tags */}
       {/* Facebook tags */}
       <meta property="og:type" content={type} />
@@ -26,6 +32,7 @@ const SEO = ({ title, description, name, type }: Props) => {
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       {/* End Twitter tags */}
+      <link rel="canonical" href={href} />
     </Helmet>
   );
 };

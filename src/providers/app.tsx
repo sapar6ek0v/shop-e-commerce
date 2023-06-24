@@ -3,7 +3,9 @@ import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+
 import { persistor, store } from '../store';
+import Loader from '../components/Loader';
 
 
 type AppProviderProps = {
@@ -12,13 +14,7 @@ type AppProviderProps = {
 
 export const AppProvider = ({ children }: AppProviderProps) => {
   return (
-    <React.Suspense
-      fallback={
-        <div className="flex items-center justify-center w-screen h-screen">
-          Loading...
-        </div>
-      }
-    >
+    <React.Suspense fallback={<Loader isCentered />}>
       <HelmetProvider>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>

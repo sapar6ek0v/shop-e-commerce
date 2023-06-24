@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useGetAllCategoriesQuery } from '../../../../store/apis/products'
 import { showTextByCategory } from '../../../../utils/showTextByCategory';
-import { CategoriesGroup, CategoryItem } from './styles'
+import { CategoriesGroup, CategoriesLoadingText, CategoryItem } from './styles'
 
 interface Props {
   currentCategory: string;
@@ -27,7 +27,7 @@ const Categories = ({ currentCategory }: Props) => {
             </CategoryItem>
           ))}
         </> :
-        <p>Loading...</p>}
+        <CategoriesLoadingText>Загрузка...</CategoriesLoadingText>}
     </CategoriesGroup>
   )
 }

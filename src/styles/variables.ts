@@ -11,6 +11,7 @@ const variables = css`
     --black: #000000;
     --secondary-black: #141414;
     --yellow: #fab702;
+    --red: #db0505;
 
     --transition: all 0.2s ease-out 300ms;
   }

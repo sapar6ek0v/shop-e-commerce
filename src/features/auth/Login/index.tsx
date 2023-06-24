@@ -5,11 +5,17 @@ import { z } from 'zod';
 
 import InputField from '../../../components/Form/InputField';
 import PasswordInputField from '../../../components/Form/PasswordInputField';
+import SEO from '../../../components/SEO';
 import { useAppDispatch } from '../../../lib/useAppDispatch';
 import { setCredentials } from '../../../store/slices/auth';
 import { Paths } from '../../../config/paths';
-import { Centered, ContentWrapper } from '../styles'
-import { Button, FormWrapper } from './styles'
+import {
+  Button,
+  Centered,
+  ContentWrapper,
+  FormWrapper,
+  WelcomeTitle
+} from './styles'
 
 const user = {
   name: 'User',
@@ -51,20 +57,31 @@ const Login = () => {
     }
 
     dispatch(setCredentials({ user: values.username, isLoggedIn: !!values.username }));
-    navigate(Paths.MAIN);
+    navigate(Paths.MAIN, { replace: true });
     form.reset();
   }
 
   return (
-    <Centered>
-      <ContentWrapper>
-        <FormWrapper onSubmit={form.onSubmit(handleSubmit)}>
-          <InputField placeholder="Имя" {...form.getInputProps('username')} />
-          <PasswordInputField placeholder="Пароль" {...form.getInputProps('password')} />
-          <Button>Войти</Button>
-        </FormWrapper>
-      </ContentWrapper>
-    </Centered>
+    <>
+      <SEO
+        title="Вход"
+        description="Страница ввода"
+        keywords=""
+        name=""
+        type=""
+        href={Paths.LOGIN}
+      />
+      <Centered>
+        <ContentWrapper>
+          <FormWrapper onSubmit={form.onSubmit(handleSubmit)}>
+            <WelcomeTitle>Добро пожаловать!</WelcomeTitle>
+            <InputField placeholder="Имя" {...form.getInputProps('username')} />
+            <PasswordInputField placeholder="Пароль" {...form.getInputProps('password')} />
+            <Button>Войти</Button>
+          </FormWrapper>
+        </ContentWrapper>
+      </Centered>
+    </>
   )
 }
 

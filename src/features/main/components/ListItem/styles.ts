@@ -9,6 +9,8 @@ export const ListItemWrapper = styled.div`
 `;
 
 export const ListItemGrid = styled.div`
+  position: relative;
+  min-height: 20vh;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 50px;
@@ -71,6 +73,14 @@ export const CategoryItem = styled.li<CategoryProps>`
   &:is(:hover, :active, :focus) {
     color: var(--white-blue);
   }
+`;
+
+export const CategoriesLoadingText = styled.p`
+  ${({ theme }) => theme.mixins.fs16};
+  font-weight: 500;
+  font-style: italic;
+  color: var(--white-blue);
+  text-align: center;
 `;
 
 export const ItemWrapper = styled.div`

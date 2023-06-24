@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useGetAllProductsQuery } from '../../../../store/apis/products'
 import { Container } from '../../../../components/Layout/styles'
+import Loader from '../../../../components/Loader'
 import Categories from './Categories'
 import Title from './Title'
 import Item from './Item'
@@ -18,7 +19,7 @@ const ListItem = () => {
         <ListItemGrid>
           {!isLoading && products ?
             products.map((product) => (<Item key={product.id} product={product} />))
-            : <p>Loading...</p>}
+            : <Loader isCentered />}
         </ListItemGrid>
       </ListItemWrapper>
     </Container>
